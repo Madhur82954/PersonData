@@ -39,9 +39,9 @@ namespace ConsoleApp1
             double averageAge = person.Average(person => person.Age);
             return averageAge;
         }
-        public void CheckNameExists(List<Person> person,string Name)
+        public bool CheckNameExists(List<Person> person,string Name)
         {
-            
+            return person.Any(person=>person.Name.Equals(Name,StringComparison.OrdinalIgnoreCase));
         }
         
         static void Main(string[] args)
@@ -57,9 +57,24 @@ namespace ConsoleApp1
             Program p = new Program();
             p.RetrieveTop2(people);
             p.CheckTeenAge(people);
+            //UC4
             p.CheckAverageAge(people);
             double averageage = p.CheckAverageAge(people);
             Console.WriteLine("Average age is :"+averageage);
+            //UC5
+            Console.WriteLine("Name Exists or not");
+            string NameCheck = Console.ReadLine();
+
+            bool NameExists = p.CheckNameExists(people, NameCheck);
+
+            if (NameExists)
+            {
+                Console.WriteLine("Name Is present in List");
+            }
+            else
+            {
+                Console.WriteLine("Name Does Not Exist");
+            }
         }
     }
 }
