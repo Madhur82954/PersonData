@@ -48,6 +48,11 @@ namespace ConsoleApp1
             var lessAge = person.Where(person => person.Age >= 60).ToList();
             return lessAge;
         }
+        public List<Person> RemovePerson(List<Person> person,string name)
+        {
+            var removename = person.Where(person => !person.Name.Equals(name, StringComparison.OrdinalIgnoreCase)).ToList();
+            return removename;
+        }
         static void Main(string[] args)
         {
             List<Person> people = new List<Person>()
@@ -85,6 +90,16 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Name is :"+person2.Name);
                 Console.WriteLine("Age is :"+person2.Age);
+            }
+            //UC7
+            Console.WriteLine("Enter Name");
+            string name = Console.ReadLine();
+
+            List<Person> people1 = p.RemovePerson(people,name);
+            foreach(Person person3 in people1)
+            {
+                Console.WriteLine("Name is :"+person3.Name);
+                Console.WriteLine("Age is :"+person3.Age);
             }
         }
     }
