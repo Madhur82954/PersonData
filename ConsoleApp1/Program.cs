@@ -43,7 +43,11 @@ namespace ConsoleApp1
         {
             return person.Any(person=>person.Name.Equals(Name,StringComparison.OrdinalIgnoreCase));
         }
-        
+        public List<Person> AgeLessThan60(List<Person> person)
+        {
+            var lessAge = person.Where(person => person.Age >= 60).ToList();
+            return lessAge;
+        }
         static void Main(string[] args)
         {
             List<Person> people = new List<Person>()
@@ -74,6 +78,13 @@ namespace ConsoleApp1
             else
             {
                 Console.WriteLine("Name Does Not Exist");
+            }
+            //UC6
+            List<Person> skipPeople = p.AgeLessThan60(people);
+            foreach(var person2 in skipPeople)
+            {
+                Console.WriteLine("Name is :"+person2.Name);
+                Console.WriteLine("Age is :"+person2.Age);
             }
         }
     }
