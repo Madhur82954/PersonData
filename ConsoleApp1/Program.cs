@@ -34,6 +34,15 @@ namespace ConsoleApp1
                 Console.WriteLine("No Such Records");
             }
         }
+        public double CheckAverageAge(List<Person> person)
+        {
+            double averageAge = person.Average(person => person.Age);
+            return averageAge;
+        }
+        public void CheckNameExists(List<Person> person,string Name)
+        {
+            
+        }
         
         static void Main(string[] args)
         {
@@ -48,6 +57,9 @@ namespace ConsoleApp1
             Program p = new Program();
             p.RetrieveTop2(people);
             p.CheckTeenAge(people);
+            p.CheckAverageAge(people);
+            double averageage = p.CheckAverageAge(people);
+            Console.WriteLine("Average age is :"+averageage);
         }
     }
 }
